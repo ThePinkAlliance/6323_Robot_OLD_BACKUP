@@ -15,12 +15,13 @@ public class robot extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         // Declare our motors
         // Make sure leftleftYour ID's match leftleftYour configuration
-        DcMotor rightMotor, leftMotor, flintLockwoodMotor;
+        DcMotor rightMotor, leftMotor, flintLockwoodMotor, samMotor;
         Servo gusServo, fringServo;
 
         rightMotor=hardwareMap.dcMotor.get("rightMotor");
         leftMotor=hardwareMap.dcMotor.get("leftMotor");
         flintLockwoodMotor=hardwareMap.dcMotor.get("flintLockwoodMotor");
+        samMotor=hardwareMap.dcMotor.get("samMotor");
         gusServo=hardwareMap.get(Servo.class,"gus");
         fringServo=hardwareMap.get(Servo.class, "fring");
         // Reverse the right side motors. This maleftleftY be wrong for leftleftYour setup.
@@ -28,6 +29,7 @@ public class robot extends LinearOpMode {
         // reverse the left side instead.
         // See the note about this earlier on this page.
         flintLockwoodMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        samMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         waitForStart();
 
@@ -47,10 +49,13 @@ public class robot extends LinearOpMode {
             leftMotor.setPower(leftPower);
             if(clawUp) {
                 flintLockwoodMotor.setPower(-0.7);
+                samMotor.setPower(0.7);
             } else if(clawDown){
                 flintLockwoodMotor.setPower(0.7);
+                samMotor.setPower(-0.7);
             } else {
                 flintLockwoodMotor.setPower(0.0);
+                samMotor.setPower(0.0);
             }
             if(gamepad1.left_bumper){
                 gusServo.setPosition(45);
