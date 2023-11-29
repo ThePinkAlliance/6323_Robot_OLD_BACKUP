@@ -16,7 +16,7 @@ public class robot extends LinearOpMode {
         // Declare our motors
         // Make sure leftleftYour ID's match leftleftYour configuration
         DcMotor rightMotor, leftMotor, flintLockwoodMotor, samMotor;
-        Servo gusServo, fringServo;
+        Servo gusServo, fringServo, silly;
 
         rightMotor=hardwareMap.dcMotor.get("rightMotor");
         leftMotor=hardwareMap.dcMotor.get("leftMotor");
@@ -24,6 +24,7 @@ public class robot extends LinearOpMode {
         samMotor=hardwareMap.dcMotor.get("samMotor");
         gusServo=hardwareMap.get(Servo.class,"gus");
         fringServo=hardwareMap.get(Servo.class, "fring");
+        silly=hardwareMap.get(Servo.class, "silly");
         // Reverse the right side motors. This maleftleftY be wrong for leftleftYour setup.
         // If leftleftYour robot moves backwards when commanded to go forwards,
         // reverse the left side instead.
@@ -57,12 +58,22 @@ public class robot extends LinearOpMode {
                 flintLockwoodMotor.setPower(0.0);
                 samMotor.setPower(0.0);
             }
+            //close arm
             if(gamepad1.left_bumper){
                 gusServo.setPosition(45);
                 fringServo.setPosition(0);
+            //open arm
             } else if(gamepad1.right_bumper){
                 gusServo.setPosition(0);
                 fringServo.setPosition(45);
+            }
+            //open finger
+            if(gamepad1.a){
+                silly.setPosition(0);
+            }
+            //close finger
+            else if(gamepad1.b){
+                silly.setPosition(45);
             }
         }
     }
