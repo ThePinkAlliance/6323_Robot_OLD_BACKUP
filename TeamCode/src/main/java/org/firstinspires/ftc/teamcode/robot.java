@@ -37,8 +37,8 @@ public class robot extends LinearOpMode {
         if (isStopRequested()) return;
 
         while (opModeIsActive()) {
-            double turnAxis = gamepad1.right_stick_x; // Remember, left stick value is reversed
-            double moveAxis = gamepad1.left_stick_y; // Counteract imperfect strafing
+            double turnAxis = gamepad2.right_stick_x; // Remember, left stick value is reversed
+            double moveAxis = gamepad2.left_stick_y; // Counteract imperfect strafing
             boolean clawUp = gamepad1.dpad_up; // Lower power;
             boolean clawDown = gamepad1.dpad_down;
             // Denominator is the largest motor power (absolute value) or 1
