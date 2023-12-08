@@ -1,0 +1,4 @@
+TeamCode/build/**
+FtcRobotController/build/**
+.idea/**
+.gradle/**
