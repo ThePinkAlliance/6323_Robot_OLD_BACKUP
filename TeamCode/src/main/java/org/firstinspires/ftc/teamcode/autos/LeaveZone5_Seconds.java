@@ -11,12 +11,12 @@ import org.firstinspires.ftc.teamcode.Hardware;
  * by commanding the left & right motors for two seconds before stopping.
  */
 @Autonomous
-public class LeaveZone extends LinearOpMode {
+public class LeaveZone5_Seconds extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         // Initialize motors & sensors.
         Hardware hw = new Hardware(hardwareMap);
-        double drive_time = 2; //amount of time to drive forward in seconds
+        double drive_time = 5; //amount of time to drive forward in seconds
         waitForStart();
 
         // Start timer.

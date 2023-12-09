@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@TeleOp(name = "Driver Control")
-public class Tele extends LinearOpMode {
+@TeleOp(name = "Dual Driver Control")
+public class TeleDualDriver extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         Hardware hw = new Hardware(hardwareMap);
@@ -24,8 +24,8 @@ public class Tele extends LinearOpMode {
             double left_distance = (hw.left_motor.getCurrentPosition() / 40 / 28) * 3.5 * 3.14;
             double right_distance = (hw.right_motor.getCurrentPosition() / 40 /28) * 3.5 * 3.14;
 
-            boolean clawUp = gamepad1.dpad_up; // Lower power;
-            boolean clawDown = gamepad1.dpad_down;
+            boolean clawUp = gamepad2.dpad_up; // Lower power;
+            boolean clawDown = gamepad2.dpad_down;
 
             double left_y = gamepad1.left_stick_y;
             double right_y = gamepad1.right_stick_y;
@@ -44,29 +44,29 @@ public class Tele extends LinearOpMode {
                 hw.samMotor.setPower(0.0);
             }
             //close arm
-            if(gamepad1.left_bumper){
+            if(gamepad2.left_bumper){
                 hw.gusServo.setPosition(45);
                 hw.fringServo.setPosition(0);
                 //open arm
-            } else if(gamepad1.right_bumper){
+            } else if(gamepad2.right_bumper){
                 hw.gusServo.setPosition(0);
                 hw.fringServo.setPosition(45);
             }
             //open finger
-            if(gamepad1.a){
+            if(gamepad2.a){
                 hw.silly.setPosition(0);
             }
             //close finger
-            else if(gamepad1.b){
+            else if(gamepad2.b){
                 hw.silly.setPosition(45);
             }
 
             //raise pixel spear
-            if(gamepad1.y){
+            if(gamepad2.y){
                 hw.pixel_spear.setPosition(0);
             }
             //lower pixel spear
-            else if(gamepad1.x){
+            else if(gamepad2.x){
                 hw.pixel_spear.setPosition(45);
             }
 
