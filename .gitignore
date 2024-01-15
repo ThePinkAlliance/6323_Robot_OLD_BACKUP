@@ -2,3 +2,4 @@ TeamCode/build/**
 FtcRobotController/build/**
 .idea/**
 .gradle/**
+local.properties
